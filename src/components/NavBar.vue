@@ -15,15 +15,7 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item">
-          Home
-        </a>
-
-        <a class="navbar-item">
           Статьи
-        </a>
-
-        <a class="navbar-item">
-          Профиль
         </a>
       </div>
 
