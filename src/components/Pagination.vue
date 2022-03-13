@@ -19,10 +19,6 @@
 				type: Number,
 				required: true
 			},
-			limit: {
-				type: Number,
-				required: true
-			},
 			currentPage: {
 				type: Number,
 				required: true
@@ -30,7 +26,7 @@
 		},
 		computed: {
 			pages() {
-				const count = Math.ceil(this.total / this.limit)
+				const count = Math.ceil(this.total / 5)
 				return range(1, count)
 			}
 		}
