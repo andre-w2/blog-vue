@@ -26,15 +26,27 @@
         </div>
       </div>
     </div>
+    <mvc-pagination :total="total" :limit="limit" :current-page="currentPage" />
   </template>
 </template>
 
 
 <script>
   import { mapState } from 'vuex'
+  import MvcPagination from '@/components/Pagination'
 
   export default {
     name: 'MvcPost',
+    components: {
+      MvcPagination
+    },
+    data() {
+      return {
+        total: 500,
+        limit: 5,
+        currentPage: 5
+      }
+    },
     computed: {
       ...mapState({
         posts: state => state.posts.posts,
