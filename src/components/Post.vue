@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <mvc-pagination :total="total" :limit="limit" :current-page="currentPage" />
+    <mvc-pagination :total="posts.length" :current-page="currentPage" />
   </template>
 </template>
 
@@ -40,18 +40,14 @@
     components: {
       MvcPagination
     },
-    data() {
-      return {
-        total: 500,
-        limit: 5,
-        currentPage: 5
-      }
-    },
     computed: {
       ...mapState({
         posts: state => state.posts.posts,
         isLoading: state => state.posts.isLoading,
-      })
+      }),
+      currentPage() {
+        return parseInt(this.$route.query.page)
+      }      
     }
   }
 </script>

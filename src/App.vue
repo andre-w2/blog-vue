@@ -19,7 +19,7 @@ export default {
     MvcFooter
   },
   created() {
-      this.$store.dispatch('start')
+    this.$store.dispatch('startPost')
   }
 }
 </script>

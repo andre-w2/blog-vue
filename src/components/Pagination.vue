@@ -12,7 +12,6 @@
 
 <script>
 	import {range} from '@/helpers/utils'
-
 	export default {
 		name: 'MvcPagination',
 		props: {
@@ -32,7 +31,6 @@
 		computed: {
 			pages() {
 				const count = Math.ceil(this.total / this.limit)
-
 				return range(1, count)
 			}
 		}
