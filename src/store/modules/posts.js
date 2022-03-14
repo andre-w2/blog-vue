@@ -8,6 +8,7 @@ const state = {
 
 const mutations = {
 	start(state) {
+		state.isLoading = false
 		state.posts = null
 	},
 	finish(state, payload) {
@@ -21,10 +22,10 @@ const mutations = {
 }
 
 const actions = {
-	startPost(context) {
+	startPost(context, url) {
 		context.commit('start')
 		return new Promise(() => {
-			postApi.blog()
+			postApi.blog(url)
 			.then(response => {
 				context.commit('finish', response.data)
 			})

@@ -26,19 +26,34 @@
         </div>
       </div>
     </div>
-    <mvc-pagination :total="posts.length" :current-page="currentPage" />
+    <mvc-pagination :total="50" :current-page="currentPage" />
+
   </template>
+
+  <div v-else class="notification is-warning is-light">
+    Загрузка данных
+  </div>
+
 </template>
 
 
 <script>
   import { mapState } from 'vuex'
   import MvcPagination from '@/components/Pagination'
+  import {stringify, parseUrl} from 'query-string'
 
   export default {
     name: 'MvcPost',
     components: {
       MvcPagination
+    },
+    data() {
+      return {
+        url: 'posts',
+      }
+    },
+    mounted() {
+      this.$store.dispatch('startPost', this.url)
     },
     computed: {
       ...mapState({
@@ -46,8 +61,25 @@
         isLoading: state => state.posts.isLoading,
       }),
       currentPage() {
-        return parseInt(this.$route.query.page)
+        return Number(this.$route.query.page || '1')
       }      
+    },
+    methods: {
+      startPost() {
+        const parsedUrl = parseUrl(this.url)
+        const stringifiedParams = stringify({
+          _page: this.currentPage,
+          ...parsedUrl.query
+        })
+        const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+
+        this.$store.dispatch('startPost', apiUrlWithParams)
+      }
+    },
+    watch: {
+      currentPage() {
+        this.startPost()
+      }
     }
   }
 </script>

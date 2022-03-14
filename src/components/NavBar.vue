@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <router-link class="navbar-item" :to="{name: 'home'}">
         <img src="@/assets/logo.svg">
-      </a>
+      </router-link>
 
       <a class="navbar-burger">
         <span aria-hidden="true"></span>

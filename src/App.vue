@@ -17,9 +17,6 @@ export default {
     MvcNavBar,
     MvcHome,
     MvcFooter
-  },
-  created() {
-    this.$store.dispatch('startPost')
   }
 }
 </script>
