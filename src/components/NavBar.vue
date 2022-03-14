@@ -14,22 +14,9 @@
 
     <div class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
+        <router-link :to="{name: 'home'}" class="navbar-item">
           Статьи
-        </a>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Вход</strong>
-            </a>
-            <a class="button is-light">
-              Создать
-            </a>
-          </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </nav>
